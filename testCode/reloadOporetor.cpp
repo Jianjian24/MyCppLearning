@@ -18,6 +18,7 @@ public:
         vol = this->heigh * this->width * this->length ;
         return vol;
     }
+    
     // 写一个关于运算符重载的demo
     // 两个Box 相加 其中长 宽 高 分别对应相加即可
     void operator+ (const Box& b1){
