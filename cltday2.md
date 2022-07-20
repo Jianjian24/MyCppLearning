@@ -1,6 +1,8 @@
 # mfc学习笔记
 
-## Day 1
+*20220720：刚加入公司的两周，第一周是复习了C++的语法以及设计模式——单例类，第一周的感觉是很充实且忙碌，但是时间一长我怕回忘记太多，因此在这里写下了这篇笔记来记录所学所想，现在还是在学习MFC中，时间赶，任务重，还有注意照顾好自己的身体哇！*
+
+## First week
 
 ### 底层实现窗口
 1. sdk api 句柄
@@ -53,13 +55,11 @@ Ref:D:\code\mfcCode\testCode\Win32Project2\Win32Project2
 10. return TRUE;
 11. 对项目进行设置，再共享DLL中使用mfc
 
-### 消息映射机制
-1. 声明宏 写到.h 中
-2. 分界宏 写到.cpp 中 
-3. 找消息宏 写到分界宏中
-4. 把函数原型写到.h 中
-5. 函数的实现写到.cpp 中
-6. 鼠标、键盘、绘图
+### 消息映射机制 参考SaleSystem(自定义消息)
+1. 声明宏(函数原型) 写到MainFrm.h 中 
+2. 分界宏 写到MainFrm.cpp 中 
+3. 找需要传的消息 写到分界宏中
+4. 函数的实现写到.cpp 中
 
 ``` C++
 	// mfc 中的字符串 CString
@@ -134,7 +134,7 @@ Ref:D:\code\mfcCode\testCode\Win32Project2\Win32Project2
 7. UpdateData(TRUE) // 将控件的内容同步到变量中
    1. FALSE反之
 
-### clt第二阶段考试一 设计两位数的计算器软件
+### clt第二阶段考试一 设计两位数的计算器软件 0718
 1. 设计界面
 2. 赋予第一个显示编辑框为只读 作为公式和结果的展示
 3. 赋予第二个输入编辑框为只可输入，作为输入数字的显示窗口
@@ -180,7 +180,7 @@ if (str.IsEmpty())  //判断是否为空
 
 
 
-### 下拉框 CCombox
+### 下拉框 CCombox 0718
 1. 属性中加入数据 data 用；分割
 2. 默认排序 sort 修改为 false就不排序了
 3. type 类型为DropList 就不可以编辑
@@ -192,7 +192,7 @@ if (str.IsEmpty())  //判断是否为空
 9. 根据当前索引 获取内容  getLBText（index, str）
 10. 控件事件 void CMy04_comboBoxCtrlDlg::OnCbnSelchangeCombo1()
 
-### ListControl 列表控件
+### ListControl 列表控件 0719
 1. view 报表模式
 2. 添加表头 InsertCol
 3. 添加正文 从 0 索引
@@ -201,7 +201,7 @@ if (str.IsEmpty())  //判断是否为空
 6. 设置风格 整行选中 网格显示
    1. 	m_list.SetExtendedStyle(m_list.GetExtendedStyle() | LVS_EX_BORDERSELECT | LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT); // 注意那个 | 代表或运算 然后这些格式东西，现在下载的文档里找，之后再去在线文档找
 
-### MFC案例笔记
+### MFC案例笔记 0719
 1. 创建项目
 2. 配置项目
    1. 预处理器 的宏添加
@@ -223,14 +223,41 @@ if (str.IsEmpty())  //判断是否为空
       5. 消息映射好好学习
          1. 在类的消息里查看
          2. 在类的重写里也重新构造
-         3. ....
+         3. ...
 4. 静态拆分窗口
-
+   1. 创建两个窗口类 CSelectView 和 CDisplayView
+   2. CSplitterWnd m_spliter; // 在MainFrame.h里面声明 用于划分窗口类对象
+   3. 拆分成一行两列
+   4. 创建0行0列 创建 0行1列对象
+   5. return TRUE 代表用户自己拆分 在CMainFrame::OnCreateClient中
+5. 树视图功能
+   1. .h中声明m_treeCtrl 树控件 CImageList 图片集合
+   2. 获取到树控件 getTreeCtrl()
+      1. 准备资源
+      2. 添加节点
+   3. 添加事件 切换选中项触发的事件 注意changing 和changed的区别
+6. 个人信息界面搭建
+7. 自定义消息发送和界面挂载
+   1. 声明自定义的消息 NM_ABCDE 写在MainFrame.h中
+   2. 自定义消息 写到分界宏中 写在MainFrame.cpp中
+   3. 声明 OnMyChange 方法
+   4. SelectView 中发送 消息 ::postMessage // ::前不加类名表示这个函数或者变量是一个全局函数/变量
+   5. 根据不同的参数做不同的界面挂载
 
 平时在控件编辑窗口按回车会被返回是因为CDialogEx::OnOK();的执行 
 
 
-### git 推送失败
+### git 推送失败 0719
 1. 会不会因为是在两边都提交了，导致冲突发生
+2. 推送成功，需要先拉取前面的历史记录
+   1. （3）重定基 git pull --rebase origin master
+3. 但是这样想要同步其他文件夹咋办
+4. 创建一个新文件夹试一下
 
-刚推应走后
+### 书本菜单学习所得 0720
+1. 资源的ID号命名方式
+   1. M —— Menu 菜单 IDM
+   2. C —— Curcor 光标
+   3. I —— Icon 图标
+2. 注意每次操作都要在能够显示的那个窗口上干，相纸与相框
+3. 
