@@ -260,4 +260,11 @@ if (str.IsEmpty())  //判断是否为空
    2. C —— Curcor 光标
    3. I —— Icon 图标
 2. 注意每次操作都要在能够显示的那个窗口上干，相纸与相框
+3. CDialog::DoModal()的返回值为IDOK，IDCANCEL ，其中的OK和Cancel建默认是DoModal的返回值，并且有自动重写的OnOK方法
+4. 继承于CDialog就可以直接DoModal
+
+### 绘图学习
+1. 对于编辑控件而言，当用户在其上面对文本进行改变是，他会向其父窗口，即对话框发送一个 EN_CHANGE 通知消息
+   1. 单击按钮，该按钮会向对话框发送BN_CLICKED 消息
+2. Invalidate函数原型： void Invalidate( BOOL bErase = TRUE);该函数的作用是使整个窗口客户区无效。窗口的客户区无效意味着它需要重绘，例如，如果一个被其它窗口遮住的窗口变成了前台窗口，那么原来被遮住的部分就是无效的，需要重绘。这时Windows会在应用程序的消息队列中放置WM_PAINT消息。MFC为窗口类提供了WM_PAINT的消息处理函数OnPaint，OnPaint负责重绘窗口。
 3. 
