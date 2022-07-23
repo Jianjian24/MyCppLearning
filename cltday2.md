@@ -1,4 +1,6 @@
-# mfc学习笔记
+# 入职第二周mfc学习笔记
+
+*我有点长。。。*
 
 *20220720：刚加入公司的两周，第一周是复习了C++的语法以及设计模式——单例类，第一周的感觉是很充实且忙碌，但是时间一长我怕回忘记太多，因此在这里写下了这篇笔记来记录所学所想，现在还是在学习MFC中，时间赶，任务重，还有注意照顾好自己的身体哇！*
 
@@ -267,4 +269,67 @@ if (str.IsEmpty())  //判断是否为空
 1. 对于编辑控件而言，当用户在其上面对文本进行改变是，他会向其父窗口，即对话框发送一个 EN_CHANGE 通知消息
    1. 单击按钮，该按钮会向对话框发送BN_CLICKED 消息
 2. Invalidate函数原型： void Invalidate( BOOL bErase = TRUE);该函数的作用是使整个窗口客户区无效。窗口的客户区无效意味着它需要重绘，例如，如果一个被其它窗口遮住的窗口变成了前台窗口，那么原来被遮住的部分就是无效的，需要重绘。这时Windows会在应用程序的消息队列中放置WM_PAINT消息。MFC为窗口类提供了WM_PAINT的消息处理函数OnPaint，OnPaint负责重绘窗口。
-3. 
+   
+
+### clt阶段二考试二 设计一个MFC图形对话框
+1. 设计窗口
+2. 设计文件格式
+   1. 创建文件类InfoFile
+      1. msg 结构体
+         1. 形状 圆 0 正方形 1 运用宏定义 CIRCLE RECTANGLE
+         2. 边长或半径 UINT  lengthOrRad
+         3. 中心点 
+            1. 根据中心点和绘制属性去计算Rect的边缘点
+   2. 点击保存
+      1. 先将文本框里的变量属性保存到InfoFile里的msg
+         1. 一些错误判断
+   3. 点击加载
+      1. 从文件里的对应位置将数据读到成员变量上并显示
+3. 图形的运动
+   1. 选择输入的模型 圆 or 正方形
+   2. 根据模型计算运动方式和碰撞条件
+      1. 圆 中心点-a < 0 || 中心点+a > 控件.height 则代表越界
+      2. 正方形 中心点+边长/2 > 控件.height || 中心点-边长/2 < 0 则代表越界
+   3. m_preY保存上一次图形的位置，由于只是上下运动，所以只需要保存y轴位置即可
+   4. 根据m_direction判断当前的方向是上还是下
+      1. 如果是方向为上
+         1. 下一次未发生碰撞，那么m_preY-m_speed
+         2. 下一次发生碰撞，m_direction取反 m_preY+m_speed
+      2. 如果是方向为下
+         1. 下一次未发生碰撞，那么m_preY+m_speed
+         2. 下一次发生碰撞，m_direction取反 m_preY-m_speed
+4. 点击窗口图形变色
+   1. 定义类成员变量m_changeColor
+   2. 根据成员变量去修改画刷属性
+5. 反省
+   1. MFC 中BOOL的原型是int（？？？人间迷惑行为） 并不是一个bit位置，所以取反后不是1 0 1 0的关系， 用！运算符也可
+   2. 先做好逻辑的搭建 先做好逻辑的搭建 先做好逻辑的搭建！！！
+   3. UpdateData 那里 有自动检测错误信息输入的方法，但是不建议在这种需要实时更新的
+
+在OnInit里面写Combobox的初始项
+
+通过中心点和半径来计算边缘两个点的位置
+<!-- void CSettingDlg::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+	// TODO: Add your message handler code here
+	// Do not call CDialogEx::OnPaint() for painting messages
+	UpdateData(TRUE);
+	CPen pen(m_nLineStyle, m_nLineWidth, RGB(255, 0, 0));
+	dc.SelectObject(&pen);
+	CRect rect;
+	GetDlgItem(IDC_SAMPLE)->GetWindowRect(&rect);
+	ScreenToClient(&rect);
+
+	dc.MoveTo(rect.left, rect.top );
+	dc.LineTo(rect.right - 20, rect.top + rect.Height() / 2);
+} -->
+底色先设定好，
+在默认的对话框里新建好相应的控制变量
+
+
+坐标不对，乱走
+
+绘图之后马上会被底色所覆盖
+
+
