@@ -27,6 +27,9 @@ int main()
     //     std::cout << it << " " ;
     // }
     std::cout << arr[10] << " " ;
+    bool flag = true;
+    flag = ~flag;
+    std::cout << (~flag) << " " ;
 
     // getchar();
     return 0;
