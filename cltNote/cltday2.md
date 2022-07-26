@@ -324,12 +324,4 @@ if (str.IsEmpty())  //判断是否为空
 	dc.MoveTo(rect.left, rect.top );
 	dc.LineTo(rect.right - 20, rect.top + rect.Height() / 2);
 } -->
-底色先设定好，
-在默认的对话框里新建好相应的控制变量
-
-
-坐标不对，乱走
-
-绘图之后马上会被底色所覆盖
-
 
