@@ -17,6 +17,7 @@ void testEnum(myNum demo)
 
 int main()
 {
+    // default: output "0" represent the first item
     myNum num;
     testEnum(num);
     return 0;
