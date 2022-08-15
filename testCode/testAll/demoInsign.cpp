@@ -70,3 +70,17 @@ HRESULT CCSVFile::LoadFromCSV(CString filePath)
 
 	return T9_S_OK;
 }
+
+
+//提示输出
+GetDlgItem(nCtrlID[id])->GetWindowText(strContent);
+if (strContent.Compare(strContent.SpanIncluding(_T("0123456789.默认值Default"))) != 0)
+{
+	if (id < 4 && strContent.Compare(strContent.SpanIncluding(_T("0123456789.默认值Default"))) != 0)
+	{
+		CString strText = g_translate.TranslateString(_T("Tools_Only_Numbers_Can_Input"));
+		G_ShowBalloonTip(GetDlgItem(nCtrlID[id])->GetSafeHwnd(), tagTip, strText, strTitle, TTI_INFO);
+		bValid = FALSE;
+	}
+		break;
+}
