@@ -84,3 +84,28 @@ if (strContent.Compare(strContent.SpanIncluding(_T("0123456789.默认值Default"
 	}
 		break;
 }
+
+//关于梯度的二维数组
+21	 std::vector<float>   m_fVecUpGradient[whiteColor];    //上边缘梯度 
+22	 std::vector<float>   m_fVecDownGradient[whiteColor];    //下边缘梯度 
+23	 std::vector<float>   m_fVecLeftGradient[whiteColor];    //左边缘梯度 
+24	 std::vector<float>   m_fVecRightGradient[whiteColor];   //右边缘梯度
+
+float CCalibrationSetting::GetEdgeGradient(int nRow, EnGradientDirection type, int nColor)
+{
+	switch (type)
+	{
+	case enUp:
+		return m_fVecUpGradient[nColor][nRow];
+	case enDown:
+		return m_fVecDownGradient[nColor][nRow];
+	case enLeft:
+		return m_fVecLeftGradient[nColor][nRow];
+	case enRight:
+		return m_fVecRightGradient[nColor][nRow];
+	default:
+		ASSERT(0);
+		break;
+	}
+	return 0;
+}
