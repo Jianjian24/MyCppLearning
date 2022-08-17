@@ -109,3 +109,53 @@ float CCalibrationSetting::GetEdgeGradient(int nRow, EnGradientDirection type, i
 	}
 	return 0;
 }
+
+
+//灯点xp结构体
+struct SCaliModuleInfo
+{
+	int			m_nRowOfBlock;	//模组所在的分区行序号
+	int			m_nIndex;		//模组在分区内的序号
+	int			m_nRow;			//模组行数
+	std::vector<int> m_vecCount;		//每行灯点个数
+	SCaliModuleInfo()
+	{
+		m_nRow = 0;
+		m_nRowOfBlock = 0;
+		m_nIndex = 0;
+	}
+
+	SCaliModuleInfo& operator = (SCaliModuleInfo& other)
+	{
+		if (this == &other)
+			return *this;
+		m_nIndex = other.m_nIndex;
+		m_nRowOfBlock = other.m_nRowOfBlock;
+		m_nRow = other.m_nRow;
+		if (other.m_vecCount.size() > 0)
+		{
+			m_vecCount.resize(other.m_vecCount.size());
+			m_vecCount.assign(other.m_vecCount.begin(), other.m_vecCount.end());
+		}
+	}
+
+	bool operator > (SCaliModuleInfo& other)
+	{
+		if (m_nRowOfBlock > other.m_nRowOfBlock)
+			return true;
+		else if (m_nRowOfBlock == other.m_nRowOfBlock && m_nIndex > other.m_nIndex)
+			return true;
+		else
+			return false;
+	}
+
+	bool operator == (SCaliModuleInfo& other)
+	{
+		if (m_nRowOfBlock == other.m_nRowOfBlock && m_nIndex == other.m_nIndex)
+			return true;
+		else
+			return false;
+	}
+};
+
+typedef std::vector<SCaliModuleInfo>	VecSCaliModuleInfo;
