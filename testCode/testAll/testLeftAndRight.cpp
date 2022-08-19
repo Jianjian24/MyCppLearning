@@ -1,5 +1,9 @@
-#include "../../../jian.h"
+// #include "../../../jian.h"
+#include <iostream>
+#include <vector>
 
+using std::cin;
+using std::cout;
 // 用于判断传入的参数是左值还是右值的print()函数
 template<typename T>
 void print(T& t){
