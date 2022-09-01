@@ -22,7 +22,7 @@ public:
 int main()
 {
     testEnum t1;
-    std::cout << t1.Tue;
+    std::cout << t1.Mon;
 
     return 0;
 }
