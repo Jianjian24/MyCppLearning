@@ -10,6 +10,7 @@ void test_rand(void)
     {
         n = rand();
         printf("%d\n", n);
+        // nullptr_t
     }
 }
 
