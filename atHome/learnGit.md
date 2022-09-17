@@ -28,7 +28,7 @@
 ## git commit --amend
 1. 有时你提交过代码之后，发现一个地方改错了，你下次提交时不想保留上一次的记录；或者你上一次的commit message的描述有误，这时候你可以使用接下来的这个命令：git commit --amend
 
-## git branch -f [branchName]
+## git branch -f [branchNeedToMOove] [MoveTo]
 1. 移动分支指针到指定位置
    
 ## git rebase
@@ -37,3 +37,8 @@
 ## git fetch
 1. git fetch只是将远程中的东西下载到本地，并不会改变原本本地仓库的文件
 2. fetch后会更新本地仓库中的远程仓库指针
+
+## 远程仓库操作
+### 偏移的工作记录
+![图 1](../Bin/image/2022-09-15-chaos.png)  
+每次push，提交的仓库需要与远程的仓库在起始的地方保持一致
