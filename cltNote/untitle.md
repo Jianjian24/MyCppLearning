@@ -4,4 +4,17 @@
 4. 消息机制是MFC编程的重要机制之一，谁发送消息，谁接收，相应的消息处理函数和消息宏定义
 5. extern 关键字用于在给一个变量或者函数声明，告诉编译器先别急着报错，这个变量或者函数是在其他地方被定义的，详见下图：
 ![图 1](../Bin/image/2022-09-19-externDemo.png)  
-6. 时刻注意编译器确实有可能会抽风，但概率确实小。。。
+6. ``sizeof()``求出里面表达式的大小，以字节为单位，但是要注意传进去的是指针还是一整个空间
+```C++
+    CString strPWD = it->m_strPassword;
+    CStringA strA(strPWD);
+    //char* pBuf = nullptr;
+    //int len = G_CString_TO_Char(strPWD, pBuf);
+    char* pBuf = strA.GetBuffer();
+    int len = strA.GetLength();
+    bacCrypt.Encrypt((BYTE*)pBuf, strlen(pBuf));					//加密
+    CString strEncrypt(pBuf);
+    strA.ReleaseBuffer();
+```
+![图 4](../Bin/image/2022-09-21-sizeof.png)  
+7. MFC的初始化：https://blog.csdn.net/Lirx_Tech/article/details/48178811
