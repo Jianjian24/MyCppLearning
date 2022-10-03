@@ -38,7 +38,6 @@ void fun2()
     myMap.insert(p);
 }
 
-
 int main()
 {
     fun1();

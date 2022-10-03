@@ -39,6 +39,11 @@ std::string Stamp2Time(long long timestamp)
 int main()
 {
 	__int64 stampTime = 0LL;
+	unsigned int stampTime32 = 0;
+	struct tm *mytm;
+	time_t t = time(NULL);
+	stampTime32 = (unsigned int)t;
+	std::cout << "32:" << std::to_string(stampTime32) << '\n';
 	std::cout << "\n" << GetTimeStamp(stampTime) << "\n";
 	std::cout << "\n" << Stamp2Time(stampTime) << "\n";
 	// SYSTEMTIME		stLocal, stUTC, stUTC2;

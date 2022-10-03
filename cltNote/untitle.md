@@ -18,3 +18,5 @@
 ```
 ![图 4](../Bin/image/2022-09-21-sizeof.png)  
 7. MFC的初始化：https://blog.csdn.net/Lirx_Tech/article/details/48178811
+8. 初始化顺序，根据需要在对象实例化的时候利用外面的set对对象进行操作
+9. //https://blog.csdn.net/crazygougou/article/details/9389867 vector iterators incompatible
