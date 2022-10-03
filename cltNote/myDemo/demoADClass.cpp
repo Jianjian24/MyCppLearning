@@ -1,27 +1,34 @@
 #include <iostream>
 using namespace std;
 
-class AD
+struct AD
 {
-
+    virtual ~AD(){}
 };
 
-class Data : public AD
+struct Data : public AD
 {
-public:
-void fun1();
     int A;
     double B;
     double Bb;
+
+    Data()
+    {
+        A = 100;
+        B = 100.123;
+    }
 };
 
 int main()
 {
-    Data* ad = new Data;
-    ad->A = 100;
-    ad->B = 100;
+    AD* ad = new Data;
+    void* value = new Data;
+    // ad->A = 100;
+    // ad->B = 100;
     cout << sizeof(AD) << '\n';
-    cout << sizeof(Data) << '\n';
+    cout << sizeof(Data) << '\n';    
+    cout << ((Data*)value)->A << '\n';
+    cout << ((Data*)value)->B << '\n';
     return 0;
 }
 
