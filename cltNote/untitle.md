@@ -20,3 +20,5 @@
 7. MFC的初始化：https://blog.csdn.net/Lirx_Tech/article/details/48178811
 8. 初始化顺序，根据需要在对象实例化的时候利用外面的set对对象进行操作
 9. //https://blog.csdn.net/crazygougou/article/details/9389867 vector iterators incompatible
+10. 在线性搜索的应用场景下可以考虑使用二分法，寻找左右边界
+11. WaitForSingleObject的效果就相当于一个关卡，只有返回给了WaitForSingleObject结果程序才能继续执行，当然线程不一定能正常执行结束，也可能会出现，提前结束的情况，原因是给的等待时间结束了，但这个线程还是没有执行完，可以将WaitForSingleObject的第二个参数设置为 INFINITE，就可以一直等待。
