@@ -22,3 +22,7 @@
 9. //https://blog.csdn.net/crazygougou/article/details/9389867 vector iterators incompatible
 10. 在线性搜索的应用场景下可以考虑使用二分法，寻找左右边界
 11. WaitForSingleObject的效果就相当于一个关卡，只有返回给了WaitForSingleObject结果程序才能继续执行，当然线程不一定能正常执行结束，也可能会出现，提前结束的情况，原因是给的等待时间结束了，但这个线程还是没有执行完，可以将WaitForSingleObject的第二个参数设置为 INFINITE，就可以一直等待。
+12. 关于屏幕闪烁问题 参考：https://blog.csdn.net/ximi19881011/article/details/24941287
+13. MFC双缓冲解决闪烁问题
+    1.  双缓冲的原理可以这样形象的理解：把电脑屏幕看作一块黑板。首先我们在内存环境中建立一个“虚拟“的黑板，然后在这块黑板上绘制复杂的图形，等图形全部绘制完毕的时候，再一次性的把内存中绘制好的图形“拷贝”到另一块黑板（屏幕）上。采取这种方法可以提高绘图速度，极大的改善绘图效果。
+    2.  参考：https://blog.csdn.net/xiaowang629/article/details/38946267
