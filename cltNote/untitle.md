@@ -20,3 +20,6 @@
 7. MFC的初始化：https://blog.csdn.net/Lirx_Tech/article/details/48178811
 8. 初始化顺序，根据需要在对象实例化的时候利用外面的set对对象进行操作
 9. //https://blog.csdn.net/crazygougou/article/details/9389867 vector iterators incompatible
+10. #define 后面只有一个参数，用法同define后接两个参数，只是后一个参数为空字符串。用途包括：
+    1.  定义一个符号用来给#if(n)def判断。  
+    2.  多文件编译中防止头文件被重复包含。
