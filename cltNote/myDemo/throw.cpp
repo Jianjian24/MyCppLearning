@@ -15,9 +15,9 @@ int main()
     {
         res=fuc(2,3);
         cout<<"The result of x/y is : "<<res<<endl;
-        res=fuc(4,0);                                //出现异常
+        // res=fuc(4,0);                                //出现异常
     }
-    catch(double)                                    //捕获并处理异常
+    catch(...)//...代表处理所有异常                                 //捕获并处理异常
     {
         cerr<<"error of dividing zero.\n";
         exit(1);                                    //异常退出程序
