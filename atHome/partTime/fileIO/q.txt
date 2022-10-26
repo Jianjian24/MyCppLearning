@@ -1,0 +1,36 @@
+Write a C++ console program that prompts a user to enter attributes for three students, and outputs the collected data in a nicely-formatted table. Name the CPP as "Lab3.cpp"
+
+This is very similar to the program sample earlier in this module with Jack and Jill and their classmate, except that all three are to be entered using cin, not just the one classmate. Since the code block to prompt the user for attributes and cin and store their values is to be used three times instead of just one, write a generic value-returning function to do all that and return a Student object. Call it three times from main -- once for each student.
+
+You may write a void function to output the result for a Student object, shared as a parameter.
+
+Here are other requirements:
+
+Customize the attributes. Include exactly five of your choosing.
+Include table column headings, correctly-spaced.
+The total of all column widths and the spaces separating them should not exceed 80 spaces.
+You choose which attributes to left-justify, right-justify, or center (centering is not easy -- use Q&A to exchange ideas!).
+Use cin >> for at least one attribute, and getline for at least one.
+Use the string buffer method to cin numbers (as per usual).
+Serialize down to students.txt as the last thing that your program does. If you do this right, the file should have 15 lines -- 5 for each of the 3 objects.  You don't need to write the table column heading in the file as when you would write to cout.
+We will not fully implement serialization in this assignment. But to prepare for it in later assignments, you'll include "serializing down" in this one. It will have no effect on the program, because you won't be serializing up. But it's done this way here to get you used to making sure that serializing down works right before attempting add serializing up in all future work.
+
+More Input Redirection
+
+Note: this is a tool to help you save time with input.  It's NOT part of this assignment.
+
+Type all your input into a TXT file (for example, input.txt). With so many lines of input in this program, redirection will save you lots of time in development! Something like this:
+
+John Doe
+21
+Concord
+Jane Doe
+24
+Lafayette
+Like that, but with all three students and all 5 attributes. If you do this right, it will be 15 lines long. Store the file in the same folder as your CPP. Then when you run, do this on a Windows PC:
+
+Lab3.exe < input.txt
+...or this on a Mac or Linux:
+
+./Lab3 < input.txt
+You won't be reminded to use redirection in any future labs. Now that you know how it's done, it's up to you to decide when you want to use it. 
