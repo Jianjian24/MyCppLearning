@@ -14,11 +14,11 @@ using std::string;
 
 struct Student
 {
-  string fullName;
+  int birthYear;
   double gpa;
+  string fullName;
   string address;
   string year;
-  int birthYear;
 };
 
 Student getStudentInfo();
@@ -38,4 +38,30 @@ int main()
     outputStudent(1, stu1);
     outputStudent(2, stu2);
     outputStudent(3, stu3);
+}
+
+Student getStudentInfo()
+{
+    Student stu;
+    char buf[100];
+    cout << "Please enter the full name of this student: ";
+    getline(cin, stu.fullName);
+    cout << "Enter "<< stu.fullName <<"'s birth year, gpa, year of enrollment, address : \n";
+    cin >> stu.birthYear ; stu.birthYear = atoi(buf); cin.ignore(1000, 100);
+    cin >> stu.gpa ; stu.gpa = atof(buf); cin.ignore(1000, 100);
+    cin >> stu.address;
+    cin >> stu.year;
+
+}
+
+
+
+void    outputStudent(int sequenceNumber, Student anyStudent)
+{
+
+}
+
+void    serializeDownToFile(Student stu1, Student stu2, Student stu3)
+{
+  
 }
