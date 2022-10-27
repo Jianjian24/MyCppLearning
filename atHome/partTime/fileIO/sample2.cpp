@@ -63,7 +63,8 @@ int main()
 
 void outputTableHeading()
 {
-  cout << "   # Name                 Age Grade Point Average\n";
+  // cout << "   # Name                 Age Grade Point Average\n";
+  cout << "   # Name     \tAge\tGrade   Point Average\t\n";
   cout << "---- -------------------- --- -------------------\n";
 }
 
@@ -72,7 +73,7 @@ void outputStudent(int sequenceNumber, Student anyStudent)
   cout.width(4); cout << sequenceNumber << ' ';
   cout.setf(ios::left); cout.width(20); cout << anyStudent.name;
   cout.unsetf(ios::left); cout.width(4); cout << anyStudent.age;
-  cout.width(6); cout << anyStudent.gpa << endl;
+  cout.width(10); cout << anyStudent.gpa << endl;
 
   anyStudent.age = 99;  // can you change anyStudent's data?
   cout << "in func: " << anyStudent.age << endl;
