@@ -38,6 +38,8 @@ int main()
     outputStudent(1, stu1);
     outputStudent(2, stu2);
     outputStudent(3, stu3);
+
+    return 0;
 }
 
 Student getStudentInfo()
@@ -52,16 +54,17 @@ Student getStudentInfo()
     cin >> stu.address;
     cin >> stu.year;
 
+    return stu;
 }
 
 
 
-void    outputStudent(int sequenceNumber, Student anyStudent)
+void outputStudent(int sequenceNumber, Student anyStudent)
 {
 
 }
 
-void    serializeDownToFile(Student stu1, Student stu2, Student stu3)
+void serializeDownToFile(Student stu1, Student stu2, Student stu3)
 {
   
 }
