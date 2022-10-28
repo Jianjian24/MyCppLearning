@@ -6,6 +6,7 @@ using std::ios;
 #include <iostream>
 using std::cin;
 using std::cout;
+using std::endl;
 
 #include <string>
 using std::getline;
@@ -22,12 +23,24 @@ struct Student
   string year;
 };
 
+void print_id(string lab_desc)
+{
+  cout << "ZIYU XUE" <<endl;
+  cout << lab_desc << endl;
+  cout << "Editor used: Onedrive Text Editor" << endl;
+  cout << "Compiler Used: CodeBlock" << endl;
+  cout << "File: " << __FILE__ << endl;
+  cout << "Compiled" << __DATE__ << endl;
+}
+
 Student getStudentInfo();
 void    outputStudent(int sequenceNumber, Student anyStudent);
 void    serializeDownToFile(Student stu1, Student stu2, Student stu3);
 void    outputTableHeading();
 int main()
 {
+    print_id("Something here!!");
+
     Student stu1;
     Student stu2;
     Student stu3;
