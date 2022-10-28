@@ -1,0 +1,30 @@
+Lab 5A: Track Expenses Using Character Arrays (C String)
+ 
+Objectives:
+• Perform C string manipulations
+• Understand how to manipulate data using arrays
+• Handle input errors and invalid values
+• Design and create a well-structure program using C++ basic programming constructs
+ 
+Description:
+Write a menu-driven program that provides the following options:
+1. Show All
+2. Spend
+3. Search expenses containing this string
+4. Search expenses with greater than or equal to this amount
+5. Exit
+It allows the user to select a menu option to display all expenses, add new entry, search for a substring and find the list of entries greater a given amount.
+ 
+Requirements:
+1. The program must produce similar output as example below. The output should be formatted nicely as given.
+2. The program must use array of structs
+3. The program must not use global variables. In another words, it must use local variables and pass-by-value or pass-by-reference parameters.
+4. The expense struct must use character array (C++ string is NOT allowed).
+5. You should not use data file to save or read from. All operations should be done through the use of arrays and array indices.
+6. You must write at least 2 functions.
+ 
+Required error handling:
+The program MUST perform the following checks:
+1. Check for invalid amount (negative or 0 number)
+2. Description cannot be empty.
+3. Search is case-insensitive (ignore case, but the user may type in any case).

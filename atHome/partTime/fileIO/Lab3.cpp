@@ -23,24 +23,22 @@ struct Student
   string year;
 };
 
-void print_id(string lab_desc)
+void print_id(string lab_desc) 
 {
-  cout << "ZIYU XUE" <<endl;
-  cout << lab_desc << endl;
-  cout << "Editor used: Onedrive Text Editor" << endl;
-  cout << "Compiler Used: CodeBlock" << endl;
-  cout << "File: " << __FILE__ << endl;
-  cout << "Compiled" << __DATE__ << endl;
+    cout << "Alexa Amazon\n";
+    cout << lab_desc << endl;
+    cout << "Editor(s) used: CodeBlock\n";
+    cout << "Compiler(s) used: CodeBlock\n";
+    cout << "File: " << __FILE__ << "\n";
+    cout << "Compiled: " << __DATE__ << " at " << __TIME__ << "\n\n";
 }
-
 Student getStudentInfo();
 void    outputStudent(int sequenceNumber, Student anyStudent);
 void    serializeDownToFile(Student stu1, Student stu2, Student stu3);
 void    outputTableHeading();
 int main()
 {
-    print_id("Something here!!");
-
+    print_id("Lab 3");
     Student stu1;
     Student stu2;
     Student stu3;

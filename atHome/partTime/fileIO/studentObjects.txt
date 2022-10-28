@@ -1,7 +1,3 @@
-21
-Joseph Doe
-3.8
-18
-Jane Smith
-3.4
-EOF
+11
+123
+2
