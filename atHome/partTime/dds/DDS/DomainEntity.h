@@ -1,8 +1,6 @@
 #include ".\Entity.h"
 #include ".\DomainParticipant.h"
 
-class DomainParticipant;
-
 class DomainEntity : public Entity
 {
 private:

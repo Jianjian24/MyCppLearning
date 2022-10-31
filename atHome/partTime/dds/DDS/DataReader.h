@@ -1,3 +1,5 @@
+#pragma once
+
 #include ".\DataReaderListener.h"
 #include <string>
 using std::string;

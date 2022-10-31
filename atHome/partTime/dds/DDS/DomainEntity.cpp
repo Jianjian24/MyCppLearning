@@ -1,7 +1,7 @@
 #include ".\DomainEntity.h"
 #include ".\DomainParticipantFactory.h"
 
-
+class DomainParticipantFactory;
 DomainEntity::DomainEntity()
 {
 }

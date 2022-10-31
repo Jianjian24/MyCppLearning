@@ -1,3 +1,5 @@
+#pragma once
+
 #include ".\DataWriter.h"
 
 class Publisher

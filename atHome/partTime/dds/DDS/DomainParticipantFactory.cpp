@@ -10,6 +10,6 @@ DomainParticipantFactory::~DomainParticipantFactory()
 
 DomainParticipant* DomainParticipantFactory::create_participant()
 {
-    DomainParticipant *participant = new DomainParticipant();
-    return participant;
+    // DomainParticipant *participant = ;
+    return new DomainParticipant;
 }

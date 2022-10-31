@@ -1,3 +1,5 @@
+#pragma once
+
 #include ".\DataReader.h"
 
 class Subscriber

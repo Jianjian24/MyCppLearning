@@ -1,3 +1,5 @@
+#pragma once
+
 #include ".\DataWriterListener.h"
 #include <string>
 using std::string;

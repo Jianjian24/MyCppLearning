@@ -7,8 +7,10 @@
 using namespace std;
 
 
-void DoPublish();
-void DoSubscribe();
+DomainParticipantFactory* DomainParticipantFactory::domainParticipantFactoryInstance = nullptr;
+
+void DoPublish(DomainParticipant*  participant);
+void DoSubscribe(DomainParticipant*  participant);
 
 int main()
 {
@@ -21,15 +23,17 @@ int main()
         cout << "Enter your option: ";
         cin >> option;
         // DomainParticipant* domainPartcipant = DomainParticipantFactory::getInstance()->create_participant();
+        DomainEntity entity;
+        DomainParticipant*  participant = entity.create_participant();
         char c;
         while ((c = getchar()) != '\n'); // clear buffer
         switch (option)
         {
             case 1:
-                DoPublish();
+                DoPublish(participant);
                 break;
             case 2:
-                DoSubscribe();
+                DoSubscribe(participant);
                 break;
             case 3:
                 exit(0);
@@ -43,11 +47,8 @@ int main()
     return 0;
 }
 
-void DoPublish()
+void DoPublish(DomainParticipant*  participant)
 {
-    DomainEntity entity;
-    DomainParticipant*  participant = entity.create_participant();
-
     Publisher* publisher = participant->creat_publisher();
 
     DataWriter* dataWriter = publisher->create_dataWriter();
@@ -61,11 +62,8 @@ void DoPublish()
     while ((c = getchar()) != '\n'); // clear buffer
 }
 
-void DoSubscribe()
+void DoSubscribe(DomainParticipant*  participant)
 {
-    DomainEntity entity;
-    DomainParticipant*  participant = entity.create_participant();
-
     Subscriber* subscriber = participant->creat_subscriber();
 
     DataReader* reader = subscriber->create_dataReader();
