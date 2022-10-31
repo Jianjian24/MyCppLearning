@@ -11,5 +11,5 @@ public:
     DomainEntity();
     ~DomainEntity();
 
-    DomainParticipant m_DomainParticipant;
+    DomainParticipant*  create_participant();
 };

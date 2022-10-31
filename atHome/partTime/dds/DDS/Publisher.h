@@ -1,4 +1,4 @@
-
+#include ".\DataWriter.h"
 
 class Publisher
 {
@@ -7,4 +7,6 @@ private:
 public:
     Publisher(/* args */);
     ~Publisher();
+
+    DataWriter* create_dataWriter();
 };

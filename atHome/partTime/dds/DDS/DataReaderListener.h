@@ -5,5 +5,5 @@ private:
 public:
     DataReaderListener(/* args */);
     ~DataReaderListener();
-    virtual bool on_data_available() = 0;
+    virtual bool on_data_available(const char* buf) = 0;
 };

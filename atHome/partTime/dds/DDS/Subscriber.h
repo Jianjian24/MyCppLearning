@@ -1,3 +1,5 @@
+#include ".\DataReader.h"
+
 class Subscriber
 {
 private:
@@ -5,4 +7,6 @@ private:
 public:
     Subscriber(/* args */);
     ~Subscriber();
+
+    DataReader* create_dataReader();
 };
