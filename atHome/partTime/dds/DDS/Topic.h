@@ -1,15 +1,15 @@
 #include <string>
+#include <vector>
 using namespace std;
 
 class Topic
 {
 private:
-    /* data */
-    //todo: 动态数组
-    string m_topic;
+    vector<string>  m_vecTopic;
+    // string m_topic;
 public:
-    Topic(string strTopic = "Undefine");
+    Topic();
     ~Topic();
-    string GetTopic();
-    bool SetTopic(string& str);
+    void GetTopic(vector<string>  &vecTopic);
+    bool AddTopic(string& str);
 };

@@ -2,12 +2,13 @@
 #include ".\Subscriber.h"
 #include ".\Publisher.h"
 #include ".\DomainParticipantFactory.h"
+// #include ".\DomainEntity.h"
 #include <iostream>
 using namespace std;
 
 
-void DoPublish();
-void DoSubscribe();
+void DoPublish(DomainParticipant* domainPartcipant);
+void DoSubscribe(DomainParticipant* domainPartcipant);
 
 int main()
 {
@@ -25,10 +26,10 @@ int main()
         switch (option)
         {
             case 1:
-                DoPublish();
+                DoPublish(domainPartcipant);
                 break;
             case 2:
-                DoSubscribe();
+                DoSubscribe(domainPartcipant);
                 break;
             case 3:
                 exit(0);
@@ -42,12 +43,12 @@ int main()
     return 0;
 }
 
-void DoPublish()
+void DoPublish(DomainParticipant* domainPartcipant)
 {
 
 }
 
-void DoSubscribe()
+void DoSubscribe(DomainParticipant* domainPartcipant)
 {
 
 }

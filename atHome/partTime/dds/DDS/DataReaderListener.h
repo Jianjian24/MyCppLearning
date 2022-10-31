@@ -7,5 +7,3 @@ public:
     ~DataReaderListener();
     virtual bool on_data_available() = 0;
 };
-
-

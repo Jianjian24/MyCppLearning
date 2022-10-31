@@ -1,3 +1,5 @@
+
+
 class Publisher
 {
 private:
@@ -6,11 +8,3 @@ public:
     Publisher(/* args */);
     ~Publisher();
 };
-
-Publisher::Publisher(/* args */)
-{
-}
-
-Publisher::~Publisher()
-{
-}

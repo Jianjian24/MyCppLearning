@@ -1,6 +1,6 @@
 #include ".\Topic.h"
 
-Topic::Topic(string strTopic) : m_topic(strTopic)
+Topic::Topic()
 {
 }
 
@@ -8,12 +8,14 @@ Topic::~Topic()
 {
 }
 
-string Topic::GetTopic()
+void Topic::GetTopic(vector<string>  &vecTopic)
 {
-    return m_topic;
+    vecTopic.clear();
+    vecTopic.assign(m_vecTopic.begin(), m_vecTopic.end());
 }
 
-bool Topic::SetTopic(string& str)
+bool Topic::AddTopic(string& str)
 {
-    m_topic = str;
+    m_vecTopic.push_back(str);
+    return true;
 }
