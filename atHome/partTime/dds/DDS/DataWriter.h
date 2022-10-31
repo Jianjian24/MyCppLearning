@@ -1,4 +1,6 @@
-class DataWriter
+#include ".\DataWriterListener.h"
+
+class DataWriter : public DataWriterListener
 {
 private:
     /* data */
