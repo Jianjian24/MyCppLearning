@@ -12,3 +12,8 @@ string Topic::GetTopic()
 {
     return m_topic;
 }
+
+bool Topic::SetTopic(string& str)
+{
+    m_topic = str;
+}

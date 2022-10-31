@@ -4,20 +4,20 @@ class DomainParticipant;
 
 class DomainParticipantFactory
 {
+//单例模式 + 工厂模式
 private:
-    // static DomainParticipantFactory* domainParticipantFactoryInstance;
-    /* data */
-
-public:
+    static DomainParticipantFactory* domainParticipantFactoryInstance;
     DomainParticipantFactory(/* args */);
     ~DomainParticipantFactory();
-	// static DomainParticipantFactory* getInstance() 
-    //     {
-	// 	if(domainParticipantFactoryInstance == NULL) 
-	// 		domainParticipantFactoryInstance = new DomainParticipantFactory();
-	// 	return instance;
-	// }
-    static DomainParticipant* create_participant();
+
+public:
+	static DomainParticipantFactory* getInstance() 
+        {
+		if(domainParticipantFactoryInstance == NULL) 
+			domainParticipantFactoryInstance = new DomainParticipantFactory();
+		return domainParticipantFactoryInstance;
+	}
+    DomainParticipant* create_participant();
 };
 
-// DomainParticipantFactory* DomainParticipantFactory::domainParticipantFactoryInstance = nullptr;
+DomainParticipantFactory* DomainParticipantFactory::domainParticipantFactoryInstance = nullptr;

@@ -19,7 +19,9 @@ int main()
         cout << "\t1. Publish Topic\n\t2. Subscribe Topic\n\t3. exit" << endl;
         cout << "Enter your option: ";
         cin >> option;
-        DomainParticipant* domainPartcipant = DomainParticipantFactory::create_participant();
+        DomainParticipant* domainPartcipant = DomainParticipantFactory::getInstance()->create_participant();
+        char c;
+        while ((c = getchar()) != '\n'); // clear buffer
         switch (option)
         {
             case 1:
