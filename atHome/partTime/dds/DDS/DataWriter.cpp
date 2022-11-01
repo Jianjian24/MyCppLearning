@@ -3,7 +3,7 @@
 #include <stdio.h>
 #pragma comment(lib,"ws2_32.lib")
 
-DataWriter::DataWriter(/* args */)
+DataWriter::DataWriter()
 {
 }
 
@@ -17,7 +17,7 @@ bool DataWriter::write(string topic)
     return on_data_write(buf);
 }
 
-bool on_data_write(const char* buf)
+bool DataWriter::on_data_write(const char* buf)
 {
     WORD wVersionRequested;
 	WSADATA wsaData;
@@ -39,7 +39,7 @@ bool on_data_write(const char* buf)
 	}
 	SOCKET sockSen = socket(AF_INET, SOCK_DGRAM, 0);
 	SOCKADDR_IN addrSen;
-	addrSen.sin_addr.S_un.S_addr = inet_addr("192.168.1.103");
+	addrSen.sin_addr.S_un.S_addr = inet_addr("192.168.71.115");
 	addrSen.sin_family = AF_INET;
 	addrSen.sin_port = htons(6000);
 	

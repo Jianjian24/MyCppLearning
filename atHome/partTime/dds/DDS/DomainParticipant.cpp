@@ -13,12 +13,12 @@ Publisher* DomainParticipant::creat_publisher()
     return new Publisher;
 }
 
-Subscriber* creat_subscriber()
+Subscriber* DomainParticipant::creat_subscriber()
 {
     return new Subscriber;
 }
 
-Topic* creat_topic()
+Topic* DomainParticipant::creat_topic()
 {
     return new Topic;
 }

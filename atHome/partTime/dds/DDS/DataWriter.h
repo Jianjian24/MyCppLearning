@@ -9,7 +9,7 @@ class DataWriter : public DataWriterListener
 private:
     bool on_data_write(const char* buf) override;
 public:
-    DataWriter(/* args */);
+    DataWriter();
     ~DataWriter();
 
     bool write(string topic);
