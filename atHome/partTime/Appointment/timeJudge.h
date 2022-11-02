@@ -1,6 +1,6 @@
-int timeJudge(int year, int month, int day)//ʱ���жϺ��������������ڵ�ʱ���
+int timeJudge(int year, int month, int day)//????��?????????????????????
 {
-	size_t now_time = 0, set_time = 0;
+	long long now_time = 0, set_time = 0;
 	struct tm q;
 	q.tm_year = year-1900;
 	q.tm_mon = month-1;

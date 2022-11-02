@@ -1,3 +1,5 @@
+#include <sys/time.h>
+
 extern void userLogin(int order)//两端口共用的登录函数，其中order为判断医生与用户的依据 ；用户为0，医生为1 
 {
    	system("cls");

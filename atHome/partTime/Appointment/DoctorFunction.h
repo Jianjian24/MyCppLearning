@@ -1,3 +1,5 @@
+// #include ".\Input.h"
+
 void DoctorFunction(char u[],char n[],char office[])//医生端功能模块，同时接受传入的账号、姓名、科室 
 {
 	//定义要显示的菜单 

@@ -1,8 +1,8 @@
 #ifndef _MENU_H_
 #define _MENU_H_
-#define  Program "题目:校医院管理系统"
-#define  Author  "作者:DYJ"
-#define  Class   "班级:计算机20级14班"
+#define  Program "题目:医院预约挂号系统"
+#define  Author  "作者:B20030401"
+#define  Class   "班级:计算机科学与技术"
 //定义结构体
 CONSOLE_CURSOR_INFO cci; 
 //定义默认的坐标位置  	
