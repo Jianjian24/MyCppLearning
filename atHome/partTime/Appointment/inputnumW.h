@@ -1,3 +1,4 @@
+
 void inputnumW(int order)//两端口共用的数据数量写入文件的函数，其中order为判断医生与用户的依据 ；用户为0，医生为1
 {
 	FILE *fp;

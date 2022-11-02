@@ -2,6 +2,7 @@
 // #include "pch.h"
 #include <iostream>
 #include<thread>
+#include<mutex>
 using namespace std;
 
 int g_data = 0;
@@ -27,12 +28,16 @@ int main()
 {
     thread mythread1(print1);
     // mythread1.join();
+    mythread1.detach();
     int op = 0;
+    mutex mtx;
     do
     {
     // mythread1.detach();
     cin >> g_data;
+    // mtx.lock();
     cout << "main thread here:" << g_data << endl;//这里应该用锁将IO锁住，这句话完成之后再解锁
+    // mtx.unlock();
         /* code */
     } while (g_data != 2);
     
