@@ -36,3 +36,4 @@
 19. C/S架构相关学习
 20. 关于二分查找，利用搜索区间取避免漏掉元素，在实际的代码中表现形式为right的取值和终止条件[left,right] 其中``while(left<=right)``即left == right + 1的时候终止
 21. 设计函数之前先考虑异常处理
+22. 关于环状引用 https://blog.csdn.net/xiaoxiaoguailou/article/details/123361649
