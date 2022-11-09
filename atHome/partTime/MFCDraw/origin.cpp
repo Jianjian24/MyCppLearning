@@ -18,8 +18,6 @@ struct chart1
 
 	double longitude;		//经度坐标
 	double latitude;        //纬度坐标
-
-
 };
 struct chart
 {
