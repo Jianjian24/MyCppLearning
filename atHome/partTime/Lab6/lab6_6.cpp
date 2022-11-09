@@ -35,22 +35,24 @@ int main()
   firstStudentPtr = temp;
 
   // add a node to the beginning of the list
-  temp = new Student{"Siri", 432, 3.55f}; // C++11 syntax
-  temp->next = firstStudentPtr;
-  firstStudentPtr->prev = temp;
-  firstStudentPtr = temp;
-
-  // add a node to the beginning of the list
   temp = new Student{"Alexa", 895, 3.72f}; // C++11 syntax
   temp->next = firstStudentPtr;
   firstStudentPtr->prev = temp;
   firstStudentPtr = temp;
 
+  // add a node to the beginning of the list
+  temp = new Student{"Siri", 432, 3.55f}; // C++11 syntax
+  temp->next = firstStudentPtr;
+  firstStudentPtr->prev = temp;
+  firstStudentPtr = temp;
+
+
   // Print student list.  Note: list size is not required
+  sortList(firstStudentPtr);
   printStudents(firstStudentPtr);
 
   // Remove a single node
-  Student *prev, *nodePtr;
+  Student  *nodePtr;
   string studentName;
   cout << "Enter a student name to remove: ";
   cin >> studentName;

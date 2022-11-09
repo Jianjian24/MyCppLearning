@@ -58,10 +58,10 @@ int main()
   if (nodePtr)
   {
     if (prev)
-      prev->next = nodePtr->next; // skips over the node at p
+      prev->next = nodePtr->next;     // skips over the node at p
     else
-   firstStudentPtr = nodePtr->next; // there's a new head, possibly zero
-    delete nodePtr; // we're done with this node
+      firstStudentPtr = nodePtr->next; // there's a new head, possibly zero
+      delete nodePtr;                  // we're done with this node
   }
   else
     cout << "Student not found\n";
