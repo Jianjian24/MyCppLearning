@@ -35,3 +35,20 @@ protected:
 	double* longitude;			//经度坐标
 	double* latitude;			//纬度坐标
 };
+
+class MyData
+{
+private:
+	/* data */
+public:
+	MyData(/* args */);
+	~MyData();
+};
+
+MyData::MyData(/* args */)
+{
+}
+
+MyData::~MyData()
+{
+}
