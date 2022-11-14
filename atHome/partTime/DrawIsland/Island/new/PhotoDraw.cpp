@@ -118,6 +118,26 @@ void CPhotoDraw::OnMouseMove(UINT nFlags, CPoint point)
 	CWnd::OnMouseMove(nFlags, point);
 }
 
+void CPhotoDraw::DrawSoundingPoint(CDC& dc)
+{
+	SetBtnStatus(enNormal);
+}
+
+void CPhotoDraw::DrawChannelLine(CDC& dc)
+{
+	SetBtnStatus(enNormal);
+}
+
+void CPhotoDraw::DrawContour(CDC& dc)
+{
+	SetBtnStatus(enNormal);
+}
+
+void CPhotoDraw::DrawIsland(CDC& dc)
+{
+	SetBtnStatus(enNormal);
+}
+
 void CPhotoDraw::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	SetBtnStatus(enLBtnisDown);

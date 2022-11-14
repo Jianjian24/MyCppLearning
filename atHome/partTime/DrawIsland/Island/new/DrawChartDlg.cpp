@@ -97,22 +97,26 @@ BOOL CDrawChartDlg::OnEraseBkgnd(CDC* pDC)
 void CDrawChartDlg::OnBnClickedBtnSoundingpoint()
 {
 	m_photoDraw.SetDrawType(enSoundingPoint);
+	m_photoDraw.SetBtnStatus(enNormal);
 }
 
 void CDrawChartDlg::OnBnClickedBtnChannelline()
 {
 	m_photoDraw.SetDrawType(enChannelLine);
+	m_photoDraw.SetBtnStatus(enNormal);
 }
 
 
 void CDrawChartDlg::OnBnClickedBtnContour()
 {
 	m_photoDraw.SetDrawType(enContour);
+	m_photoDraw.SetBtnStatus(enNormal);
 }
 
 void CDrawChartDlg::OnBnClickedBtnIsland()
 {
 	m_photoDraw.SetDrawType(enIsland);
+	m_photoDraw.SetBtnStatus(enNormal);
 }
 
 void CDrawChartDlg::OnLButtonDown(UINT nFlags, CPoint point)
