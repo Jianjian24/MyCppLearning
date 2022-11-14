@@ -13,11 +13,11 @@ IMPLEMENT_DYNAMIC(CPhotoDraw, CDialogEx)
 
 CPhotoDraw::CPhotoDraw(CWnd* pParent /*=nullptr*/)
 {
+	m_enDrawType = enNone;
+	m_enBtnStatus = enNormal;
 #ifndef _WIN32_WCE
 	EnableActiveAccessibility();
 #endif
-
-
 
 }
 
@@ -59,6 +59,8 @@ BEGIN_MESSAGE_MAP(CPhotoDraw, CWnd)
 	ON_WM_PAINT()
 	ON_WM_ERASEBKGND()
 	ON_WM_MOUSEMOVE()
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 
@@ -105,6 +107,23 @@ void CPhotoDraw::OnPaint()
 void CPhotoDraw::OnMouseMove(UINT nFlags, CPoint point)
 {
 	TRACE(_T("point x %d, y %d\n"), point.x, point.y);
-	Sleep(100);
-	//CWnd::OnMouseMove(nFlags, point);
+	// Sleep(100);
+	//1.判断是否启用的绘图模式
+	//2.判断是否开始绘图（若是绘制深点的话只用BtnDown就好了）
+	//3.利用vector去存储点的数据，当当前模式绘图结束后，将资源添加到相应的对象，并开始绘图
+	//4.在OnDraw中通过传入的参数（利用多态，以及绘图类型，将图像绘制出来）
+
+
+
+	CWnd::OnMouseMove(nFlags, point);
+}
+
+void CPhotoDraw::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	SetBtnStatus(enLBtnisDown);
+}
+
+void CPhotoDraw::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	SetBtnStatus(enLBtnisUp);
 }

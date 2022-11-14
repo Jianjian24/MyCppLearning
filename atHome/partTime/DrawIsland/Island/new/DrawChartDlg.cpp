@@ -34,6 +34,8 @@ BEGIN_MESSAGE_MAP(CDrawChartDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_CHANNELLINE, &CDrawChartDlg::OnBnClickedBtnChannelline)
 	ON_BN_CLICKED(IDC_BTN_CONTOUR, &CDrawChartDlg::OnBnClickedBtnContour)
 	ON_BN_CLICKED(IDC_BTN_ISLAND, &CDrawChartDlg::OnBnClickedBtnIsland)
+	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 
@@ -108,8 +110,17 @@ void CDrawChartDlg::OnBnClickedBtnContour()
 	m_photoDraw.SetDrawType(enContour);
 }
 
-
 void CDrawChartDlg::OnBnClickedBtnIsland()
 {
 	m_photoDraw.SetDrawType(enIsland);
+}
+
+void CDrawChartDlg::OnLButtonDown(UINT nFlags, CPoint point)
+{
+	m_photoDraw.SetBtnStatus(enLBtnisDown);
+}
+
+void CDrawChartDlg::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	m_photoDraw.SetBtnStatus(enLBtnisUp);
 }

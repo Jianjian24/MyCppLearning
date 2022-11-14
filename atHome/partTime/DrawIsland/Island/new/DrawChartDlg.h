@@ -35,9 +35,11 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	BOOL	OnEraseBkgnd(CDC* pDC);
 	DECLARE_MESSAGE_MAP()
-public:
+protected:
 	afx_msg void OnBnClickedBtnSoundingpoint();
 	afx_msg void OnBnClickedBtnChannelline();
 	afx_msg void OnBnClickedBtnContour();
 	afx_msg void OnBnClickedBtnIsland();
+	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 };
