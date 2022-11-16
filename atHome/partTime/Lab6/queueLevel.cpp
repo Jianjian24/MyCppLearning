@@ -24,6 +24,9 @@ using std::string;
 #include<stdio.h>
 #include <stdlib.h>
 #include<ctype.h>
+
+string g_fileName = "movies.txt";
+
 void print_id(string lab_desc)
 {
  cout << "ZIYU XUE\n";
@@ -44,10 +47,8 @@ void SwapNodeData(Movie* pLeft, Movie* pRight)
 {
  Movie tmp;
  tmp.title = pLeft->title; tmp.year = pLeft->year; tmp.rating = pLeft->rating;
- pLeft->title = pRight->title; pLeft->year = pRight->year; pLeft->rating = 
-pRight->rating;
- pRight->title = tmp.title; pRight->year = tmp.year; pRight->rating = 
-tmp.rating;
+ pLeft->title = pRight->title; pLeft->year = pRight->year; pLeft->rating = pRight->rating;
+ pRight->title = tmp.title; pRight->year = tmp.year; pRight->rating = tmp.rating;
 }
 bool InitSeq(Movie* pHead)
 {
