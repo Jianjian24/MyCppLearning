@@ -26,7 +26,15 @@ using std::string;
 #include<ctype.h>
 
 string g_fileName = "movies.txt";
+typedef struct movies
+{
+ string title;
+ int year = 0;
+ int rating = 0;
+ movies* next = NULL;
+}Movie;
 
+void AddMovie(Movie*& pHead);//增加不用提示输入的
 void print_id(string lab_desc)
 {
  cout << "ZIYU XUE\n";
@@ -36,13 +44,50 @@ void print_id(string lab_desc)
  cout << "File: " << __FILE__ << "\n";
  cout << "Compiled: " << __DATE__ << " at " << __TIME__ << "\n\n";
 }
-typedef struct movies
+
+void enQueue(Movie*& pHead, Movie* node);
+void deQueue(Movie*& pHead, Movie* node);
+
+void InitQueueFromFile(Movie* pHead)
 {
- string title;
- int year = 0;
- int rating = 0;
- movies* next = NULL;
-}Movie;
+    char c[50];
+    ifstream fin(g_fileName, ios::in | ios::binary);
+    Movie node;
+
+    
+//   char *filePath = "E:\\test.txt";
+//   ifstream file;
+//   file.open(g_fileName,ios::in);
+ 
+//   if(!file.is_open())
+//         return;
+
+//        std::string strLine;
+//        while(getline(file,strLine))
+//        {
+ 
+//             if(strLine.empty())
+//                 continue;
+ 
+//             cout<<strLine <<endl;              
+//        }
+
+    while (fin.good()) // only read from the file if it exists!
+    {
+    // restore student object "a"
+        fin.getline(c, 50);
+        node.title = c;
+        fin.getline(c, 50);
+        node.year = atoi(c);
+        fin.getline(c, 50);
+        node.year = atoi(c);
+        cout << node.title << " " << node.year << " " << node.rating << " \n"; 
+    }
+    fin.close();
+    //FIFO
+    // file.close();
+}
+
 void SwapNodeData(Movie* pLeft, Movie* pRight)
 {
  Movie tmp;
@@ -88,8 +133,20 @@ void AddMovie(Movie*& pHead)
  return;
  }
  Movie* node = new Movie{ strName, year, rating };
- node->next = pHead;
- pHead = node;
+//  node->next = pHead;
+//  pHead = node;
+if (pHead == NULL)
+{
+    pHead = node;
+    return;
+}
+
+Movie* tmpNode = pHead;//add a new node at the back of the queue.
+while (tmpNode->next)
+    tmpNode = tmpNode->next;
+
+tmpNode->next = node;
+
 }
 void UpdateMovie(Movie* pHead, int key)
 {
@@ -212,6 +269,8 @@ int main()
  Movie* pHead = NULL;
  char option;
  int select = 0;
+ InitQueueFromFile(pHead);
+
  print_id("Lab 6");
  cout << "Menu\n";
  do
