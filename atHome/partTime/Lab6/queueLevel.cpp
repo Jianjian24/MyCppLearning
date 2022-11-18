@@ -45,8 +45,35 @@ void print_id(string lab_desc)
  cout << "Compiled: " << __DATE__ << " at " << __TIME__ << "\n\n";
 }
 
-void enQueue(Movie*& pHead, Movie* node);
-void deQueue(Movie*& pHead, Movie* node);
+void enQueue(Movie*& pHead, Movie* node)
+{
+    Movie* tmpNode = pHead;
+
+    if (!tmpNode)
+    {
+        pHead = node;
+        return;
+    }
+
+    while (tmpNode->next)
+    {
+        tmpNode = tmpNode->next;
+    }
+    tmpNode->next = node;
+    
+}
+void deQueue(Movie* pHead)
+{
+    Movie* tmpNode = pHead;
+
+    while(tmpNode->next)
+    {
+        pHead = pHead->next;
+        delete tmpNode;
+        tmpNode = pHead;
+    }  
+    delete tmpNode;
+}
 
 void InitQueueFromFile(Movie* pHead)
 {
@@ -330,15 +357,18 @@ int main()
  cout << "Invalid choice" << endl;
  }
  } while (option != 'q' || option != 'Q');
- Movie* pCur = pHead;
- Movie* pNext = pHead->next;
- while (pNext)
- {
- delete pCur;
- pCur = pNext;
- pNext = pNext->next;
- }
- delete pCur;
+
+ deQueue(pHead);
+ 
+//  Movie* pCur = pHead;
+//  Movie* pNext = pHead->next;
+//  while (pNext)
+//  {
+//  delete pCur;
+//  pCur = pNext;
+//  pNext = pNext->next;
+//  }
+//  delete pCur;
  system("pause");
 }
 /*********************************************************************
