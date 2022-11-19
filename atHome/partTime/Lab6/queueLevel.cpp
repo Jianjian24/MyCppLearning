@@ -65,54 +65,62 @@ void enQueue(Movie*& pHead, Movie* node)
 void deQueue(Movie* pHead)
 {
     Movie* tmpNode = pHead;
-
-    while(tmpNode->next)
+    ofstream fout;
+    fout.open(g_fileName,ios::out);
+    while(tmpNode)
     {
         pHead = pHead->next;
+        fout << tmpNode->title << '\n' << tmpNode->year << '\n' << tmpNode->rating << '\n';
         delete tmpNode;
         tmpNode = pHead;
     }  
-    delete tmpNode;
+    fout.close();
+    // delete tmpNode;
 }
 
-void InitQueueFromFile(Movie* pHead)
+void InitQueueFromFile(Movie*& pHead)
 {
     char c[50];
-    ifstream fin(g_fileName, ios::in | ios::binary);
     Movie node;
+    ifstream file;
+    file.open(g_fileName,ios::in);
 
-    
-//   char *filePath = "E:\\test.txt";
-//   ifstream file;
-//   file.open(g_fileName,ios::in);
- 
-//   if(!file.is_open())
-//         return;
+    if(!file.is_open())
+        return;
 
-//        std::string strLine;
-//        while(getline(file,strLine))
-//        {
- 
-//             if(strLine.empty())
-//                 continue;
- 
-//             cout<<strLine <<endl;              
-//        }
-
-    while (fin.good()) // only read from the file if it exists!
+    std::string strLine;
+    Movie *newNode = NULL;
+    int count = 0;
+    while(getline(file,strLine))
     {
-    // restore student object "a"
-        fin.getline(c, 50);
-        node.title = c;
-        fin.getline(c, 50);
-        node.year = atoi(c);
-        fin.getline(c, 50);
-        node.year = atoi(c);
-        cout << node.title << " " << node.year << " " << node.rating << " \n"; 
+
+        if(strLine.empty())   
+            continue;
+        count++;
+        switch (count)
+        {
+        case 1:
+            node.title = strLine;
+            break;
+        case 2:
+            node.year = atoi(strLine.c_str());
+            break;
+        case 3:
+            node.rating = atoi(strLine.c_str());
+            newNode = new Movie(node);
+            enQueue(pHead, newNode);
+            count = 0;
+            // cout<<"One node\n" <<endl;     
+            break;
+        
+        default:
+            break;
+        }
+        // cout<<strLine <<endl;
+        // if (count == 3)
     }
-    fin.close();
-    //FIFO
-    // file.close();
+
+    file.close();
 }
 
 void SwapNodeData(Movie* pLeft, Movie* pRight)
@@ -351,14 +359,15 @@ int main()
  break;
  case 'q':
  case 'Q':
- exit(0);
+    deQueue(pHead);
+    exit(0);
  break;
  default:
  cout << "Invalid choice" << endl;
  }
  } while (option != 'q' || option != 'Q');
 
- deQueue(pHead);
+
  
 //  Movie* pCur = pHead;
 //  Movie* pNext = pHead->next;
