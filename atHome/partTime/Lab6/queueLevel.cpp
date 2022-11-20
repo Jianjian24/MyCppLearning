@@ -74,6 +74,7 @@ void deQueue(Movie* pHead)
         delete tmpNode;
         tmpNode = pHead;
     }  
+    fout << EOF;
     fout.close();
     // delete tmpNode;
 }
@@ -93,6 +94,11 @@ void InitQueueFromFile(Movie*& pHead)
     int count = 0;
     while(getline(file,strLine))
     {
+        if (atoi(strLine.c_str()) == EOF)
+        {
+            file.close();
+            return;
+        }
 
         if(strLine.empty())   
             continue;
