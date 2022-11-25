@@ -1,0 +1,15 @@
+Is it animated?
+Are fishes involved?
+It's Finding Nemo
+EOF
+EOF
+It's Lion King
+EOF
+EOF
+Is it a romatic film?
+It's Titanic
+EOF
+EOF
+It's Star Wars
+EOF
+EOF
