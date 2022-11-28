@@ -37,15 +37,25 @@ int main()
 {
   // all of the movies (end nodes)
   // Create these nodes dynamically
-  Movie *a = new Movie {"It's Star Wars"};
+  Movie *a = new Movie {"It's Star Wars"};//answer
   Movie *b = new Movie {"It's Titanic"};
   Movie *c = new Movie {"It's Lion King"};
   Movie *d = new Movie {"It's Finding Nemo"};
+  Movie *e = new Movie {"It's e"};
+  Movie *f = new Movie {"It's f"};
+  Movie *g = new Movie {"It's g"};
+  Movie *h = new Movie {"It's h"};
+
 
   // all of the questions
-  Movie *dc = new Movie {"Are fishes involved?", d, c};
-  Movie *ba = new Movie {"Is it a romatic film?", b, a};
+  Movie *dcq1 = new Movie {"Are fishes q1?", a, b};//q
+  Movie *dcq2 = new Movie {"Are fishes q2?", d, c};//q
+  Movie *dc = new Movie {"Are fishes involved?", dcq1, dcq2};//q
+  Movie *baq1 = new Movie {"Is it a romatic q1?", e, f};
+  Movie *baq2 = new Movie {"Is it a romatic q2?", g, h};
+  Movie *ba = new Movie {"Is it a romatic film?", baq1, baq2};
   Movie *ef = new Movie{"Is it animated?", dc, ba};
+
 
   Movie *top = ef; // the full tree
   string buf;
@@ -58,10 +68,10 @@ int main()
   {
     cout << p->sayThis; // could be the answer or could be another question
     if (p->yes == 0 && p->no == 0) break; // it was the answer -- we're done!
-    cout << " [yes/no] ";
+    cout << " [yes/no] "; 
 
     getline(cin, buf);
-    if (buf == "yes") p = p->yes;
+    if (buf == "yes" || buf == "y" || buf == "Y" || buf == "YES") p = p->yes;
     else if (buf == "no") p = p->no;
   }
 
@@ -69,7 +79,7 @@ int main()
 
   // serialize down top and all nodes below it
   ofstream fout;
-  fout.open("movieTree.txt");
+  fout.open("ai.txt");
   serializeDown(fout, top);
   fout.close();
 
@@ -94,7 +104,7 @@ int main()
 
   // Deallocate all nodes
   deallocate(top);
-
+  system("pause");
 }
 
 void serializeDown(ofstream& fout, Movie* p)
@@ -106,8 +116,8 @@ void serializeDown(ofstream& fout, Movie* p)
   {
     // serialize the p node itself
     fout << p->sayThis << "\n";
-	cout << p->sayThis << "\n";
-	serializeDown(fout, p->yes);  // serialize p->yes and all nodes below it
+	  cout << p->sayThis << "\n";
+	  serializeDown(fout, p->yes);  // serialize p->yes and all nodes below it
     serializeDown(fout, p->no);  // serialize p->no and all nodes below it
   }
 }

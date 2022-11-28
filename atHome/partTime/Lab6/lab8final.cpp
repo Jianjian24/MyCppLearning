@@ -42,7 +42,7 @@ return false;
 }
 return 0; 
 }
-//Use a boolean: 
+// Use a boolean: 
 int main() 
 {
 char choice; 
@@ -58,7 +58,7 @@ run = false;
 }
 return 0; 
 }
-//Use break to exit your loop: 
+// Use break to exit your loop: 
 int main() 
 {
 char choice; 
@@ -73,7 +73,8 @@ break;
 }
 return 0; 
 }
-//But both these solution will consider any character entered exept N/n as "continue", if you want to avoid this: 
+// But both these solution will consider any character entered exept N/n as 
+// "continue", if you want to avoid this: 
 int main() 
 {
 char choice; 
@@ -86,8 +87,7 @@ cout<<"Would you like to perform other calculation?(Y/N)"<<endl;
 cin >> choice; 
 choice = tolower(choice);//Put your letter to its lower case 
 }while (choice != 'n' && choice != 'y') 
-if(choice =='n')
-{ 
+if(choice =='n'){ 
 run = false; 
 }
 }
@@ -97,23 +97,23 @@ return 0;
 using namespace std; // This is for demonstration purposes ONLY 
 // never use this statement in your actual program. preŜ x cout and 
 // cin with std:: 
-int main()
+int main() 
 {
-    char choice; 
-    while(true) 
-    {
-    cout<<"Would you like to perform other calculations?(Y/N)"<<endl; 
-    cin >> choice; 
-    if(choice == 'Y'|| choice =='y'){ 
-    continue; // instead of returning, skip to the next iteration 
-    // and ask again 
-    }else if(choice =='N'||choice =='n'){ 
-    break; // return could be used here to break the while loop and 
-    // terminate the program. But be explicit and use a statement speciŜ cally 
-    // made for breaking out of loops 
-    }
-    }
-    return 0;
+char choice; 
+while(true) 
+{
+cout<<"Would you like to perform other calculations?(Y/N)"<<endl; 
+cin >> choice; 
+if(choice == 'Y'|| choice =='y'){ 
+continue; // instead of returning, skip to the next iteration 
+// and ask again 
+}else if(choice =='N'||choice =='n'){ 
+break; // return could be used here to break the while loop and 
+// terminate the program. But be explicit and use a statement speciŜ cally 
+// made for breaking out of loops 
+}
+}
+return 0; 
 }
 #include <iostream> 
 using namespace std; // This is for demonstration purposes ONLY 
@@ -125,7 +125,7 @@ char choice;
 do { // do everything in the do block while... 
 cout <<"Would you like to perform other calculations?(Y/N)"<< endl; 
 cin >> choice; 
-if (choice != 'Y' and choice != 'y' and choice != 'N' and choice != 'n') // if needed add input 
+if (choice != 'Y' || choice != 'y' || choice != 'N' || choice != 'n') // if needed add input 
 cout << choice << " is not a valid option. Try agian" << endl; // validation 
 } while (choice !='N' && choice !='n'); // the user input does not equal 'N'andr 'n' 
 return 0; 
