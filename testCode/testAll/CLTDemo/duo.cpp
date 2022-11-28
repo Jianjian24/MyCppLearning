@@ -48,6 +48,12 @@ class TestAddr
     }
 };
 
+void testFunzhong(int num[])
+{
+    cout << "testFunzhong\n";
+    cout << "sizeof num:" << sizeof(num) <<'\n';
+}
+
 int main()
 {
     AC *a = new son;
@@ -60,6 +66,11 @@ int main()
     TestAddr addr;
     addr.say();
     printf("init TestAdr is %x\n", &addr);
-    
+    int num[4];
+    num[0] = 1;
+    num[1] = 2;
+    num[2] = 2;
+    num[3] = 2;
+    testFunzhong(num);
 }
 
