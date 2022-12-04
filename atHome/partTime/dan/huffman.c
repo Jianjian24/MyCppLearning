@@ -9,7 +9,7 @@
  *          原字符串
  *返回值： 无
  */
-void my_strcpy(char *_Destination,char const* _Source)
+void my_strcpy(char *_Destination, char const* _Source)
 {
     unsigned char i = 0;
     unsigned char y = 0;
@@ -45,7 +45,8 @@ void Tmp_Init(char* tmp, char n)
     }
 }
 
-/*函数名：  select
+/*
+ *函数名：  select
  *功能：    找哈夫曼树中权重最小的两个数
  *输入参数：哈夫曼指针
  *          长度
@@ -367,7 +368,6 @@ void HuffCoding(Huff *HuffTree, unsigned char n, pHuffC* PHuffCode)
     int pos;
 
     //HuffCode phuffcode;
-
 
     *PHuffCode = (pHuffC)malloc(sizeof(HuffCode) * n);
 
