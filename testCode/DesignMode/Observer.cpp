@@ -32,7 +32,7 @@ public:
 
     void Remove(pObserverInterface obr) override{
         auto pos=std::find(observers.begin(),observers.end(),obr);
-        if(pos!=observers.end()){
+        if(pos!=observers.end()){//找到了
             observers.erase(pos);
         }
     }
