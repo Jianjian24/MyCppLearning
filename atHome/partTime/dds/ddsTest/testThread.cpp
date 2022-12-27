@@ -6,20 +6,25 @@
 using namespace std;
 
 int g_data = 0;
+mutex mtx;
 
 void print1()
 {
     cout << "print1_1 thread here" << endl;
     while (1)
     {
+        // cout << "print1_1 thread exit" << endl;
         if (g_data == 6)
         {
             cout << "print1_1 thread exit" << endl;
             return;
         }
     //     /* code */
-    // cout << "print1_2 thread here" << endl;
-    // cout << "print1_3 thread here" << endl;
+    mtx.lock();
+
+    cout << "print1_2 thread here" << endl;
+    cout << "print1_3 thread here" << endl;
+    mtx.unlock();
     }
     
 }
@@ -30,7 +35,6 @@ int main()
     // mythread1.join();
     mythread1.detach();
     int op = 0;
-    mutex mtx;
     do
     {
     // mythread1.detach();
