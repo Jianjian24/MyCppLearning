@@ -4263,6 +4263,13 @@ void    fm_OBBtoAABB(const float /*obmin*/[3],const float /*obmax*/[3],const flo
 }
 
 
+void test(uint32_t index,const REAL *vertices,uint32_t vstride)
+{
+	computePos
+	// calc...
+	// result..
+}
+
 const REAL * computePos(uint32_t index,const REAL *vertices,uint32_t vstride)
 {
   const char *tmp = (const char *)vertices;
