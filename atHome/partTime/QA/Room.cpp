@@ -2,8 +2,8 @@
 // Created by DrMark on 10/2/2017.
 //
 
-#include "Room.h"
-#include "wordwrap.h"
+#include "D:\code\vsCode\NOTE\C++\atHome\partTime\QA\Room.h"
+#include "D:\code\vsCode\NOTE\C++\atHome\partTime\QA\wordwrap.h"
 
 /**
  * Stores a static list of all rooms.

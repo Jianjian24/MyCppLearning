@@ -1,7 +1,7 @@
-#include "GameObject.h"
+#include "D:\code\vsCode\NOTE\C++\atHome\partTime\QA\GameObject.h"
 
 std::list<GameObject *> GameObject::gameObjects;
-std::vector<int> GameObject::gameObjectIds;
+std::vector<int> GameObject::gameObjectIds;//GameObject的成员，用来记录Object的ID
 
 GameObject::GameObject(const string *_shortName, const string *_longDescription, const string *_keyword) {
     this->shortName = _shortName;
