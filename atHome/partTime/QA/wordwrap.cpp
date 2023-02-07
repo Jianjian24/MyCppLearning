@@ -3,6 +3,8 @@
 //
 
 
+//#include <Wincon.h>
+#include <Windows.h>
 #include <cstdint>
 #include <afxres.h>
 #include <iterator>
