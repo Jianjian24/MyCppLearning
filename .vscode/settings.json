@@ -40,6 +40,7 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "input.h": "c"
+        "input.h": "c",
+        "cstring": "cpp"
     }
 }
