@@ -41,6 +41,7 @@
         "streambuf": "cpp",
         "typeinfo": "cpp",
         "input.h": "c",
-        "cstring": "cpp"
+        "cstring": "cpp",
+        "chrono": "cpp"
     }
 }
