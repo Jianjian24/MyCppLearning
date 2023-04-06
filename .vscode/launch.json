@@ -5,6 +5,14 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "(gdb) Windows 上的 Bash 启动",
             "type": "cppdbg",
             "request": "launch",
@@ -17,7 +25,9 @@
             "pipeTransport": {
                 "debuggerPath": "C:\\Program Files\\code\\cppNew\\mingw64\\bin\\gdb",
                 "pipeProgram": "${env:windir}\\system32\\bash.exe",
-                "pipeArgs": ["-c"],
+                "pipeArgs": [
+                    "-c"
+                ],
                 "pipeCwd": ""
             },
             "setupCommands": [
@@ -27,13 +37,12 @@
                     "ignoreFailures": true
                 },
                 {
-                    "description":  "将反汇编风格设置为 Intel",
+                    "description": "将反汇编风格设置为 Intel",
                     "text": "-gdb-set disassembly-flavor intel",
                     "ignoreFailures": true
                 }
             ]
         },
-        
         {
             "name": "g++.exe - 生成和调试活动文件",
             "type": "cppdbg",
