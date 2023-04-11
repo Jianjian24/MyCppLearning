@@ -21,26 +21,26 @@ def rename (path):
         new_name = path + newname # 保留原后缀
         os.rename(used_name, new_name)
 
-    for fileName in filename_list:
-        newname = re.sub('剩余.*.png$', 'Less.png', fileName, 1)
-        if newname == fileName:
-            continue
-        used_name = path + fileName
-        new_name = path + newname # 保留原后缀
-        os.rename(used_name, new_name)
+    # for fileName in filename_list:
+    #     newname = re.sub('剩余.*.png$', 'Less.png', fileName, 1)
+    #     if newname == fileName:
+    #         continue
+    #     used_name = path + fileName
+    #     new_name = path + newname # 保留原后缀
+    #     os.rename(used_name, new_name)
 
-    for fileName in filename_list:
-        newname = re.sub('总数.*.png$', 'Total.png', fileName, 1)
-        if newname == fileName:
-            continue
-        used_name = path + fileName
-        new_name = path + newname # 保留原后缀
-        os.rename(used_name, new_name)
+    # for fileName in filename_list:
+    #     newname = re.sub('总数.*.png$', 'Total.png', fileName, 1)
+    #     if newname == fileName:
+    #         continue
+    #     used_name = path + fileName
+    #     new_name = path + newname # 保留原后缀
+    #     os.rename(used_name, new_name)
 
 if __name__=='__main__':
-    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI100\\CaliLog\\CaliLogBk\\" # 目标路径
+    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI100\\CaliLog\\CaliLogIconSmall\\" # 目标路径
     rename(path)
-    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI150\\CaliLog\\CaliLogBk\\" # 目标路径
+    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI150\\CaliLog\\CaliLogIconSmall\\" # 目标路径
     rename(path)
-    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI250\\CaliLog\\CaliLogBk\\" # 目标路径
+    path="C:\\Code\\框架调整-plc\\Bin\\Calibration\\v12\\x64\\Debug\\Resource\\StyleWhite\\DPI250\\CaliLog\\CaliLogIconSmall\\" # 目标路径
     rename(path)
