@@ -7,6 +7,7 @@ using namespace std;
 #include <ctime>
 #include <cstdlib>
 #include <string>
+#include <map>
 #include <iterator>
 
 void info(char* sometext){
