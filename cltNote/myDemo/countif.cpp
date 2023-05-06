@@ -30,7 +30,13 @@ int main()
     a.push_back(0);
     a.push_back(0);
     
-    info(std::count_if(a.begin(), a.end(), [](bool val){return val == 2 ? true : false;}));
+    // info(std::count_if(a.begin(), a.end(), [](bool val){return val == 2 ? true : false;}));
+
+    int a1 = 5;
+    info(a1 ^ 1);
+    a1 = 1;
+    info(a1 ^ 1);
+    
     return 0;
 
     
