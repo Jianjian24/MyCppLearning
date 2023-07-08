@@ -9,6 +9,7 @@ using namespace std;
 #include <string>
 #include <map>
 #include <iterator>
+#include <memory>
 
 void info(char* sometext){
     cout << sometext << "\n";
