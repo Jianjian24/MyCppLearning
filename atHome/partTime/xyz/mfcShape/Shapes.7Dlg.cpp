@@ -80,6 +80,8 @@ BEGIN_MESSAGE_MAP(CShapes7Dlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &CShapes7Dlg::OnBnClickedOk)
 	ON_CBN_SELCHANGE(IDC_COMBO_SHAPE, &CShapes7Dlg::OnCbnSelchangeComboShape)
+	ON_BN_CLICKED(IDC_BUTTON_CALC, &CShapes7Dlg::OnBnClickedButtonCalc)
+	ON_BN_CLICKED(IDC_BUTTON_CLEAR, &CShapes7Dlg::OnBnClickedButtonClear)
 END_MESSAGE_MAP()
 
 
@@ -190,5 +192,68 @@ void CShapes7Dlg::OnBnClickedOk()
 
 void CShapes7Dlg::OnCbnSelchangeComboShape()
 {
+	UpdateData(TRUE);
+
+	EnShape index = EnShape(m_cbxShape.GetCurSel());
+
+	switch (index)
+	{
+	case enSquare:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"sideLength");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"N/A");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enRectangle:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"length");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"width");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enCircle:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"radius");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"N/A");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enTriangle:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"sideLength");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"N/A");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enCube:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"sideLength");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"N/A");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enBox:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"length");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"width");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"height");
+		break;
+	case enCylinder:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"radius");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"height");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	case enPrism:
+		GetDlgItem(IDC_STATIC_P1)->SetWindowText(L"sideLength");
+		GetDlgItem(IDC_STATIC_P2)->SetWindowText(L"height");
+		GetDlgItem(IDC_STATIC_P3)->SetWindowText(L"N/A");
+		break;
+	default:
+		break;
+	}
+}
+
+
+void CShapes7Dlg::OnBnClickedButtonCalc()
+{
 	// TODO: Add your control notification handler code here
+
+
+}
+
+
+void CShapes7Dlg::OnBnClickedButtonClear()
+{
+	// TODO: Add your control notification handler code here
+	GetDlgItem(IDC_EDIT_RESULT)->SetWindowTextW(L"");
 }

@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "afxwin.h"
 
 
 // CShapes7Dlg dialog
@@ -33,4 +34,10 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnBnClickedOk();
+	afx_msg void OnCbnSelchangeComboShape();
+private:
+	CComboBox m_cbxShape;
+public:
+	afx_msg void OnBnClickedButtonCalc();
+	afx_msg void OnBnClickedButtonClear();
 };
