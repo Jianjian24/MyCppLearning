@@ -6,6 +6,18 @@
 #include "afxwin.h"
 
 
+enum EnShape
+{
+	enSquare = 0,
+	enRectangle,
+	enCircle,
+	enTriangle,
+	enCube,
+	enBox,
+	enCylinder,
+	enPrism
+};
+
 // CShapes7Dlg dialog
 class CShapes7Dlg : public CDialogEx
 {
@@ -32,8 +44,9 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+	string GetValueFromControl(UINT controlID);
+	void  GetResultFromShape(EnShape curShape, std::vector<string>& vecStr);
 public:
-	afx_msg void OnBnClickedOk();
 	afx_msg void OnCbnSelchangeComboShape();
 private:
 	CComboBox m_cbxShape;

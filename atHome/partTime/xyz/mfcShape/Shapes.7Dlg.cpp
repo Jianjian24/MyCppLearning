@@ -7,25 +7,33 @@
 #include "Shapes.7.h"
 #include "Shapes.7Dlg.h"
 #include "afxdialogex.h"
+#include "pShapes.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
-enum EnShape
-{
-	enSquare = 0,
-	enRectangle,
-	enCircle,
-	enTriangle,
-	enCube,
-	enBox,
-	enCylinder,
-	enPrism
-};
-
-
 // CAboutDlg dialog used for App About
+class OutputBuffer : public std::streambuf {
+public:
+	OutputBuffer() {
+		setp(0, 0);
+	}
+
+	int_type overflow(int_type c) override {
+		if (c != EOF) {
+			m_buffer += static_cast<char>(c);
+		}
+		return c;
+	}
+
+	std::string GetOutput() const {
+		return m_buffer;
+	}
+
+private:
+	std::string m_buffer;
+};
 
 class CAboutDlg : public CDialogEx
 {
@@ -78,7 +86,6 @@ BEGIN_MESSAGE_MAP(CShapes7Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDOK, &CShapes7Dlg::OnBnClickedOk)
 	ON_CBN_SELCHANGE(IDC_COMBO_SHAPE, &CShapes7Dlg::OnCbnSelchangeComboShape)
 	ON_BN_CLICKED(IDC_BUTTON_CALC, &CShapes7Dlg::OnBnClickedButtonCalc)
 	ON_BN_CLICKED(IDC_BUTTON_CLEAR, &CShapes7Dlg::OnBnClickedButtonClear)
@@ -183,12 +190,15 @@ HCURSOR CShapes7Dlg::OnQueryDragIcon()
 
 
 
-void CShapes7Dlg::OnBnClickedOk()
+std::string CShapes7Dlg::GetValueFromControl(UINT controlID)
 {
-	// TODO: Add your control notification handler code here
-	CDialogEx::OnOK();
-}
+	CString cstr;
+	GetDlgItem(controlID)->GetWindowTextW(cstr);
+	CStringA cstrA(cstr.GetString());
+	std::string str(cstrA);
 
+	return str;
+}
 
 void CShapes7Dlg::OnCbnSelchangeComboShape()
 {
@@ -243,11 +253,105 @@ void CShapes7Dlg::OnCbnSelchangeComboShape()
 	}
 }
 
+void CShapes7Dlg::GetResultFromShape(EnShape curShape, std::vector<string>& vecStr)
+{
+	vecStr.clear();
+
+	switch (curShape)
+	{
+	case enSquare:
+		vecStr.push_back("Square");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		break;
+	case enRectangle:
+		vecStr.push_back("Rectangle");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P2));
+		break;
+	case enCircle:
+		vecStr.push_back("Circle");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		break;
+	case enTriangle:
+		vecStr.push_back("Triangle");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		break;
+	case enCube:
+		vecStr.push_back("Cube");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		break;
+	case enBox:
+		vecStr.push_back("Box");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P2));
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P3));
+		break;
+	case enCylinder:
+		vecStr.push_back("Cylinder");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P2));
+		break;
+	case enPrism:
+		vecStr.push_back("Prism");
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P1));
+		vecStr.push_back(GetValueFromControl(IDC_STATIC_P2));
+		break;
+	default:
+		break;
+	}
+}
 
 void CShapes7Dlg::OnBnClickedButtonCalc()
 {
 	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
 
+	EnShape index = EnShape(m_cbxShape.GetCurSel());
+	std::vector<string> vecResult;
+	GetResultFromShape(index, vecResult);
+
+	comsc::Shape* curShape = NULL;
+
+	switch (index)
+	{
+	case enSquare:
+		curShape = new comsc::Square(vecResult);
+		break;
+	case enRectangle:
+		curShape = new comsc::Rectangle(vecResult);
+		break;
+	case enCircle:
+		curShape = new comsc::Circle(vecResult);
+		break;
+	case enTriangle:
+		curShape = new comsc::Triangle(vecResult);
+		break;
+	case enCube:
+		curShape = new comsc::Cube(vecResult);
+		break;
+	case enBox:
+		curShape = new comsc::Box(vecResult);
+		break;
+	case enCylinder:
+		curShape = new comsc::Cylinder(vecResult);
+		break;
+	case enPrism:
+		curShape = new comsc::Prism(vecResult);
+		break;
+	default:
+		break;
+	}
+
+	OutputBuffer buffer; // 创建自定义的OutputBuffer
+	std::streambuf* oldBuffer = std::cout.rdbuf(&buffer); // 重定向std::cout到OutputBuffer
+
+	curShape->output(std::cout); // 将输出重定向到std::cout并捕获在OutputBuffer中
+
+	std::cout.rdbuf(oldBuffer); // 恢复std::cout的原始streambuf
+
+	CString output(buffer.GetOutput().c_str()); // 将OutputBuffer的内容转换为CString
+
+	GetDlgItem(IDC_EDIT_RESULT)->SetWindowTextW(output);
 
 }
 
