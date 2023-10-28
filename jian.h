@@ -10,6 +10,9 @@ using namespace std;
 #include <map>
 #include <iterator>
 #include <memory>
+#include <queue>
+
+using namespace std;
 
 void info(char* sometext){
     cout << sometext << "\n";
