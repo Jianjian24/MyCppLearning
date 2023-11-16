@@ -45,6 +45,16 @@
         "chrono": "cpp",
         "map": "cpp",
         "ctime": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "functional": "cpp",
+        "iterator": "cpp",
+        "numeric": "cpp",
+        "random": "cpp",
+        "mutex": "cpp",
+        "condition_variable": "cpp",
+        "ratio": "cpp",
+        "thread": "cpp"
     }
 }

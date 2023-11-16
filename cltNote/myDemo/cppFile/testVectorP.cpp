@@ -40,6 +40,26 @@ int main()
     {
         std::cout << it << endl;
     }
-    cout << "aaaaaaaaaaaaaaaaaaaaa";
+    cout << "aaaaaaaaaaaaaaaaaaaaa\n";
+
+    vector<int> vecA;
+    vector<int> vecB;
+    vecA.push_back(10);
+    vecA.push_back(10);
+    vecA.push_back(20);
+    vecA.push_back(30);
+
+    vecB.assign(vecA.begin(), vecA.end());
+        for(auto it : vecA)
+{
+    std::cout << it << endl;
+}
+    cout << "aaaaaaaaaaaaaaadsfsdfsfdsfaaaaaa\n";
+
+    for(auto it : vecB)
+{
+    std::cout << it << endl;
+}
+
     return 0;
 }
