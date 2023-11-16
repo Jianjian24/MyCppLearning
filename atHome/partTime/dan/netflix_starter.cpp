@@ -5,6 +5,7 @@
 #include <iomanip>
 using namespace std;
 
+typedef unsigned int UInt;
 //
 // This is a starter file to help frame your ideas around
 // this program.
@@ -32,36 +33,34 @@ struct netflix_entry {
 };
 
 // Starting number of buckets, adjust as needed -- should be a prime number.
-const int HASH_SIZE = 2089;
+const int HASH_SIZE = 10007;//2089->10007
+
+const unsigned int BASE = 131;//Use single mod to calc hash key
 
 // Hash table for all of the entries -- static so it's zeroed for free.
 static netflix_entry *entryHash[HASH_SIZE];
 
 // Generate a hash key, given a string (this would come from the
 // string the user typed to find).  your hash function goes here.
-//
-// Don't use this one, it's bad! (everything will hash to only a few buckets).
 unsigned int getHashKey(string key) {
     unsigned int sum = 0;
 
-    // use the first letter of the key
-    sum = (int)key[0];
+    int len = key.length();
 
-    // for debugging -- add a statement like this to
-    // see the hash key generated for an entry.
-    //
+    for (int i=0;i<len;i++)
+        sum=(sum*BASE+(unsigned int)key[i])%HASH_SIZE;
+
+    // for debugging
     // cout << "title: " << key
-    //     << " hash key: " << sum % hash_size << endl;
+    //     << " hash key: " << sum % HASH_SIZE << endl;
 
-    // Return the key which can be used as an index into entryHash
-    // to select which bucket.
-    return (sum % HASH_SIZE);
+    return sum;
 }
 
 // Reads a single entry, filling in the
 // fields (title, etc.) passed by the caller.
 void readSingleEntry(const string &str,
-        netflix_entry *newEnt) {
+    netflix_entry *newEnt) {
     istringstream istr(str);
     string fields[NFIELDS];
     string tmp;
@@ -84,12 +83,15 @@ void readSingleEntry(const string &str,
 // Insert a new entry into the hash table
 void entryInsert(netflix_entry *newEnt) {
 
-    //
-    // Complete this function.
-    //
-    // Accepts a new entry 'newEnt' and finds the correct hash bucket
-    // based on its hash key.  Adds the entry to a bucket.
-    //
+    UInt hIndex = getHashKey(newEnt->title);
+
+    //keep looking until find
+    while (entryHash[hIndex % HASH_SIZE])
+    {
+        hIndex++;
+    }
+    //...found it！
+    entryHash[hIndex] = newEnt;
 }
 
 // This function accepts a string title and a reference
@@ -101,22 +103,53 @@ void entryInsert(netflix_entry *newEnt) {
 // - The 'ncmp' parameter tracks the number of comparisons required
 //
 bool entryFind(const string &title, netflix_entry &foundEnt, int &ncmp) {
-    unsigned int key = getHashKey(title);
+    
+    UInt hIndex = getHashKey(title);
 
-    //
-    // Complete this function.
-    // (These are example parameters)
-    //
-    // Accepts a key, a reference to a found entry, and reference to
-    // number of comparisons.  Fill-in the values of the 'foundEnt' with
-    // the values from the entry found in the hash table.
-    //
+    //keep looking until find
+    while (entryHash[hIndex % HASH_SIZE]){
+        
+        ncmp++;
+        
+        if (entryHash[hIndex]->title == title){
+            foundEnt.type = entryHash[hIndex]->type;
+            foundEnt.title = entryHash[hIndex]->title;
+            foundEnt.director = entryHash[hIndex]->director;
+            foundEnt.country = entryHash[hIndex]->country;
+            foundEnt.year = entryHash[hIndex]->year;
+            return true;
+        }
+        else{
+            hIndex++;
+        }
+
+
+    }
+    return false;
+}
+
+void printEntry(netflix_entry &foundEnt, int &ncmp){
+    cout << endl;
+    cout << "Comparisons:" << ncmp <<endl;
+    cout << "Type:" << foundEnt.type <<endl;
+    cout << "Title:" << foundEnt.title <<endl;
+    cout << "Director:" << foundEnt.director <<endl;
+    cout << "Country:" << foundEnt.country <<endl;
+    cout << "Year of release:" << foundEnt.year <<endl;
+    cout << endl;
 }
 
 //
 // Sample main().
 //
 int main() {
+    //init entryHash
+    for (int i = 0; i < HASH_SIZE; i++)
+    {
+        entryHash[i] = nullptr;
+    }
+    
+    
     ifstream inFile(DATAFILE);
     string inputLine, inputStr;
     int linesRead = 0;
@@ -162,17 +195,33 @@ int main() {
 
     // (example) Forever loop until the user requests an exit
     for (;;) {
+        netflix_entry tmpEntry;
+        string tmp;
+        string filename;
+        int choice;
+        int nTmp = 0;
 
-        //
-        // Your input loop goes here.
-        //
-        // If the user enters a blank line, use 'break'.
-        // to exit the loop.
-        //
+        cout << "My Hash" << endl;
+        cout << "---------------" << endl;
+        cout << "1) Find movies by movie titles" << endl;
+        cout << "Enter your choice (-1 to quit): ";
+        getline(cin, tmp);
+        choice = atoi(tmp.c_str());
+
+        switch (choice) {
+        case 1:
+            cout << "Title?: " << endl;
+            getline(cin, filename);
+            if (!entryFind(filename, tmpEntry, nTmp)) {
+                cout << "Not Found!!!." << endl;
+                continue;
+            }
+            printEntry(tmpEntry, nTmp); 
+            break;
+        case -1:
+            cout << endl;
+            cout << "Exiting..." << endl;
+            return (0);
+        }
     }
-
-    // And we're done!
-    cout << "Exiting..." << endl;
-
-    return (0);
 }

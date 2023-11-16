@@ -36,7 +36,6 @@ void testDel()
         delete (*iter);
         iter = vecPNode.erase(iter);
     }
-
 }
 
 
